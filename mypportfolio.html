@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shania Tifanie Y. Soller | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #5B4BDB, #55C7F7);
+            color: white;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #FFD369;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #ffffff, #f5f7ff);
+            color: #333;
+            width: 90%;
+            max-width: 500px;
+            padding: 35px;
+            border-radius: 25px;
+            margin: 80px auto;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+            animation: zoom .4s;
+        }
+
+        .popup-content h2 {
+            color: #5B4BDB;
+            margin: 15px 0;
+        }
+
+        .popup-content p {
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .close {
+            float: right;
+            font-size: 30px;
+            color: #ff4d4d;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+        }
+
+        .hero p {
+            margin: 20px 0;
+            font-size: 22px;
+        }
+
+        .hero button {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            background: #FFD369;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.08);
+        }
+
+        /* SECTIONS */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding-bottom: 60px;
+        }
+
+        section {
+            margin: 60px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 35px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, .12);
+            padding: 20px;
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+        }
+
+        .box h3 {
+            margin-bottom: 10px;
+            color: #FFD369;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        /* POPUP */
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .6);
+        }
+
+        .popup-content {
+            background: white;
+            color: black;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 120px auto;
+            text-align: center;
+            animation: zoom .3s;
+        }
+
+        .close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: red;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">✨ Shan</div>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+
+                <span class="close" onclick="closeInfo()">&times;</span>
+
+                <div id="popupIcon" style="font-size:60px;">💜</div>
+
+                <h2 id="popupTitle"></h2>
+
+                <p id="popupText"></p>
+
+            </div>
+        </div>
+
+        <ul>
+            <li><a href="#" onclick="openPopup('about')">About</a></li>
+            <li><a href="#" onclick="openPopup('projects')">Projects</a></li>
+            <li><a href="#" onclick="openPopup('hobbies')">Hobbies</a></li>
+            <li><a href="#" onclick="openPopup('contact')">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <header class="hero">
+        <div class="profile-container">
+            <img src="shantidope.jpeg" class="profile" alt="Profile Picture">
+            <style>
+                .profile-container {
+                    text-align: center;
+                    margin: 20px 0;
+                }
+
+                .profile {
+                    width: 150px;
+                    /* Reduce size */
+                    height: 150px;
+                    border-radius: 50%;
+                    /* Makes it a circle */
+                    object-fit: cover;
+                    /* Prevents image distortion */
+                    border: 4px solid white;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                }
+            </style>
+        </div>
+        </div>
+        <h1>Hello, I'm Shania Y. Soller 👋</h1>
+
+        <p>Student • Governor • Future IT Professional</p>
+
+        <button onclick="showInfo()">Explore My Portfolio</button>
+
+    </header>
+
+    <div class="container">
+
+        <section id="about">
+
+            <h2>About Me</h2>
+
+            <div class="card">
+
+                <p>
+                    Hello! I am <b>Shania Tifanie Y. Soller</b>. I enjoy exploring new ideas and learning new skills. My
+                    dream is to become a successful IT Professional who creates technology that helps people.
+                </p>
+
+            </div>
+
+
+        </section>
+
+        <section id="projects">
+
+            <h2>Projects</h2>
+
+            <div class="grid">
+
+                <div class="box">
+                    <h3>💻 Computer Activities</h3>
+                    <p>Created presentations, documents, and programming activities in school.</p>
+                </div>
+
+                <div class="box">
+                    <h3>📚 School Leadership</h3>
+                    <p>Served as Governor by leading activities and helping organize school events.</p>
+                </div>
+
+                <div class="box">
+                    <h3>🎨 Creative Works</h3>
+                    <p>Designed poems, short stories, and creative school outputs.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="hobbies">
+
+            <h2>My Hobbies</h2>
+
+            <div class="grid">
+
+                <div class="box">
+                    <h3>🎹 Playing Instruments</h3>
+                    <p>I enjoy playing musical instruments during my free time.</p>
+                </div>
+
+                <div class="box">
+                    <h3>✍ Writing</h3>
+                    <p>I love writing poems and short stories to express my thoughts and emotions.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="contact">
+
+            <h2>Contact</h2>
+
+            <div class="card contact">
+
+                <h3>📧 shaniatysoller@gmail.com</h3>
+
+                <p>Please ask a parent or guardian before sharing personal information online.</p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+
+        <p>© 2026 Shania Tifanie Y. Soller | HTML & CSS Portfolio 💙</p>
+
+    </footer>
+
+    <div id="popup" class="popup">
+
+        <div class="popup-content">
+
+            <span class="close" onclick="closeInfo()">&times;</span>
+
+            <h2>Welcome!</h2>
+
+            <p><b>Name:</b> Shania Tifanie Y. Soller</p>
+
+            <p><b>Role:</b> Student & Governor</p>
+
+            <p><b>Dream:</b> Future IT Professional</p>
+
+            <p><b>Hobbies:</b> Playing Instruments, Writing Poems, and Short Stories</p>
+
+        </div>
+
+    </div>
+    <script>
+
+        function openPopup(type) {
+
+            const title = document.getElementById("popupTitle");
+            const text = document.getElementById("popupText");
+            const icon = document.getElementById("popupIcon");
+
+            switch (type) {
+
+                case "about":
+                    icon.innerHTML = "👩‍💻";
+                    title.innerHTML = "About Me";
+                    text.innerHTML = "Hello! I'm <b>Shania Tifanie Y. Soller</b>.<br><br>I love learning new things, exploring technology, and my biggest dream is to become a successful IT Professional.";
+                    break;
+
+                case "projects":
+                    icon.innerHTML = "📚";
+                    title.innerHTML = "My Projects";
+                    text.innerHTML = "• Computer Activities 💻<br><br>• School Leadership 👩‍🎓<br><br>• Creative Writing ✍<br><br>These experiences helped me become more creative and responsible.";
+                    break;
+
+                case "hobbies":
+                    icon.innerHTML = "🎹";
+                    title.innerHTML = "My Hobbies";
+                    text.innerHTML = "🎹 Playing musical instruments<br><br>✍ Writing poems and short stories<br><br>🎵 Composing songs to express my thoughts and emotions.";
+                    break;
+
+                case "contact":
+                    icon.innerHTML = "📧";
+                    title.innerHTML = "Contact Me";
+                    text.innerHTML = "<b>Email:</b><br>shaniatysoller@gmail.com<br><br>Feel free to reach out respectfully.";
+                    break;
+
+            }
+
+            document.getElementById("popup").style.display = "block";
+
+        }
+
+        function showInfo() {
+            openPopup("about");
+        }
+
+        function closeInfo() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        window.onclick = function (e) {
+            if (e.target == document.getElementById("popup")) {
+                closeInfo();
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
